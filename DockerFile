@@ -1,0 +1,20 @@
+# Windows Image Tag
+ARG WINDOWS_DOCKER_TAG=1809
+
+FROM mcr.microsoft.com/windows/servercore:$WINDOWS_DOCKER_TAG
+COPY asset/ C:/asset/
+
+# Mid Server Software URL
+ENV sn_file_url="https://install.service-now.com/glide/distribution/builds/package/mid/2019/07/16/mid.newyork-06-26-2019__patch0-hotfix2-07-10-2019_07-16-2019_1636.windows.x86-64.zip"
+
+RUN ["powershell.exe","Invoke-WebRequest -uri $env:sn_file_url -OutFile C:\\agent.zip -UseBasicParsing"]
+RUN ["powershell.exe","Expand-Archive C:\\agent.zip C:\\"]
+RUN ["powershell.exe","DEL C:\\agent.zip"]
+RUN ["powershell.exe","MOVE C:\\agent\\config.xml C:\\asset"]
+
+ENV sn_url=${parameter1:-}
+ENV sn_username=${parameter2:-}
+ENV sn_password=${parameter3:-}
+ENV sn_mid_server_name=${parameter4:-}
+
+CMD ["powershell.exe","C:/asset/init.ps1"]

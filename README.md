@@ -32,4 +32,3 @@ docker run  `
   -e 'sn_mid_server_name=MIDSERVERNAME' `
   geoffpasley/servicenow_mid_server
 ```
-

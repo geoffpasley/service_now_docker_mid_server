@@ -18,18 +18,18 @@ docker build -t geoffpasley/servicenow_mid_server .
 
 ```
 docker run 
-  -e 'sn_url=https://INSTANCENAME.service-now.com' 
-  -e 'sn_username=USERNAME' 
-  -e 'sn_password=PASSWORD' 
-  -e 'sn_mid_server_name=MIDSERVERNAME' 
+  -e 'sn_url=https://INSTANCENAME.service-now.com' `
+  -e 'sn_username=USERNAME' `
+  -e 'sn_password=PASSWORD' `
+  -e 'sn_mid_server_name=MIDSERVERNAME' `
   geoffpasley/servicenow_mid_server
 ```
 
 You can also use the attached environemtn file like this:
 ```
-docker run  
-  --env-file .\env_file.txt
-  -e 'sn_mid_server_name=MIDSERVERNAME' 
+docker run  `
+  --env-file .\env_file.txt `
+  -e 'sn_mid_server_name=MIDSERVERNAME' `
   geoffpasley/servicenow_mid_server
 ```
 

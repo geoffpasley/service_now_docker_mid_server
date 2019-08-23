@@ -17,7 +17,7 @@ docker build -t geoffpasley/servicenow_mid_server .
 ### Start a MID Server Instance
 
 ```
-docker run 
+docker run `
   -e 'sn_url=https://INSTANCENAME.service-now.com' `
   -e 'sn_username=USERNAME' `
   -e 'sn_password=PASSWORD' `

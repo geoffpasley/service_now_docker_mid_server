@@ -5,7 +5,12 @@ FROM mcr.microsoft.com/windows/servercore:$WINDOWS_DOCKER_TAG
 COPY asset/ C:/asset/
 
 # Mid Server Software URL
+
+# New York
 ENV sn_file_url="https://install.service-now.com/glide/distribution/builds/package/mid/2019/07/16/mid.newyork-06-26-2019__patch0-hotfix2-07-10-2019_07-16-2019_1636.windows.x86-64.zip"
+
+# Madrid
+#ENV sn_file_url="https://install.service-now.com/glide/distribution/builds/package/mid/2019/06/05/mid.madrid-12-18-2018__patch4-05-29-2019_06-05-2019_1042.windows.x86-64.zip"
 
 RUN ["powershell.exe","Invoke-WebRequest -uri $env:sn_file_url -OutFile C:\\agent.zip -UseBasicParsing"]
 RUN ["powershell.exe","Expand-Archive C:\\agent.zip C:\\"]

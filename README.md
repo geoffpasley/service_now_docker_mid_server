@@ -4,26 +4,32 @@ Windows Core container for a ServiceNow Mid Server.
 This is for the New York version of ServiceNow. The <b>sn_file_url</b> environment variable in the DockerFile can be changed to another Mid Server download .zip URL if needed. I've tested with London, Madrid, and New York and all seem to work as expected.
 
 
-## Build from docker file
+## Build From DockerFile
 
 ```
-git clone https://github.com/tkojames24/SNMidServer.git
-cd sn-mid-server
-docker build -t sn-mid-server .
+git clone https://github.com/geoffpasley/service_now_docker_mid_server.git
+cd service_now_docker_mid_server
+docker build -t geoffpasley/servicenow_mid_server .
 ```
 
-## How to use this image
+## How To:
 
-### start a MID Server instance
-
-This image includes EXPOSE 80 (the web services port)
+### Start a MID Server Instance
 
 ```
-docker run -d --name demonightlyeureka \
-  -e 'SN_URL=demonightlyeureka' \
-  -e 'SN_USER=admin' \
-  -e 'SN_PASSWD=admin' \
-  -e 'SN_MID_NAME=my_mid' \
-  toolsproservia/sn-mid-server
+docker run 
+  -e 'sn_url=https://INSTANCENAME.service-now.com' 
+  -e 'sn_username=USERNAME' 
+  -e 'sn_password=PASSWORD' 
+  -e 'sn_mid_server_name=MIDSERVERNAME' 
+  geoffpasley/servicenow_mid_server
+```
+
+You can also use the attached environemtn file like this:
+```
+docker run  
+  --env-file .\env_file.txt
+  -e 'sn_mid_server_name=MIDSERVERNAME' 
+  geoffpasley/servicenow_mid_server
 ```
 

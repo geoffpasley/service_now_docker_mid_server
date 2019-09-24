@@ -9,7 +9,8 @@ COPY asset/ C:/asset/
 #############################
 ## Madrid ##
 #ENV sn_file_url="https://install.service-now.com/glide/distribution/builds/package/mid/2019/06/05/mid.madrid-12-18-2018__patch4-05-29-2019_06-05-2019_1042.windows.x86-64.zip"
-ENV sn_file_url="https://install.service-now.com/glide/distribution/builds/package/mid/2019/07/10/mid.madrid-12-18-2018__patch4a-07-09-2019_07-10-2019_1243.windows.x86-64.zip"
+#ENV sn_file_url="https://install.service-now.com/glide/distribution/builds/package/mid/2019/07/10/mid.madrid-12-18-2018__patch4a-07-09-2019_07-10-2019_1243.windows.x86-64.zip"
+ENV sn_file_url="https://install.service-now.com/glide/distribution/builds/package/mid/2019/08/12/mid.madrid-12-18-2018__patch4b-07-17-2019_08-12-2019_1850.windows.x86-64.zip"
 ## New York ##
 #ENV sn_file_url="https://install.service-now.com/glide/distribution/builds/package/mid/2019/07/16/mid.newyork-06-26-2019__patch0-hotfix2-07-10-2019_07-16-2019_1636.windows.x86-64.zip"
 

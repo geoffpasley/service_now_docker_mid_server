@@ -1,5 +1,7 @@
 param(
-	[string]$config_file = "C:\agent\config.xml", 
+	[string]$config_file_path = "C:\agent\", 
+	[string]$config_file_name = "config.xml", 
+	[string]$config_file = "$config_file_path$config_file_name", 
 	[string]$url = $env:sn_url, 
 	[string]$username = $env:sn_username, 
 	[string]$password = $env:sn_password, 
@@ -51,24 +53,30 @@ function update-config-file
 
 $error = $false;
 
-if(!(Test-Path $config_file))
+if(!(Test-Path $config_file_path))
 {
-	$error = update-config-file;
+	Write-Host "Mount a volume or directory path to this container. Path: C:\agent\" -ForegroundColor Red;
 }
+else{
+	if(!(Test-Path $config_file))
+	{
+		$error = update-config-file;
+	}
 
-if(!$error)
-{
-    Write-Host "Conecting to: $url";
-    Write-Host "Mid Server name: $mid_server_name";
-    Write-Host "";
+	if(!$error)
+	{
+		Write-Host "Conecting to: $url";
+		Write-Host "Mid Server name: $mid_server_name";
+		Write-Host "";
 
-    cd C:\agent\
-    .\start.bat
+		cd C:\agent\
+		.\start.bat
 
-    Write-Host "Container Started..." -ForegroundColor Green;
+		Write-Host "Container Started..." -ForegroundColor Green;
 
-    while (0 -eq 0)
-    {
-        Start-Sleep -s 10;
-    }
+		while (0 -eq 0)
+		{
+			Start-Sleep -s 10;
+		}
+	}
 }

@@ -57,7 +57,15 @@ if(!(Test-Path $config_file_path))
 {
 	Write-Host "Mount a volume or directory path to this container. Path: C:\agent\" -ForegroundColor Red;
 }
-else{
+else
+{
+	
+	if((Test-Path "C:\_agent_temp\"))
+	{
+		Copy-Item -Path "C:\_agent_temp\agent\*" -Destination "C:\agent\" -Recurse;
+		DEL -Path "C:\_agent_temp\" -Force -Recurse;
+	}
+
 	if(!(Test-Path $config_file))
 	{
 		$error = update-config-file;

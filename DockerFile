@@ -13,9 +13,9 @@ COPY asset/ C:/asset/
 ENV sn_file_url="https://install.service-now.com/glide/distribution/builds/package/mid/2019/08/27/mid.newyork-06-26-2019__patch1-08-14-2019_08-27-2019_1720.windows.x86-64.zip"
 
 RUN ["powershell.exe","Invoke-WebRequest -uri $env:sn_file_url -OutFile C:\\agent.zip -UseBasicParsing"]
-RUN ["powershell.exe","Expand-Archive C:\\agent.zip C:\\_agent"]
+RUN ["powershell.exe","Expand-Archive C:\\agent.zip C:\\_agent_temp\\"]
 RUN ["powershell.exe","DEL C:\\agent.zip"]
-RUN ["powershell.exe","MOVE C:\\_agent\agent\\config.xml C:\\asset"]
+RUN ["powershell.exe","MOVE C:\\_agent_temp\\agent\\config.xml C:\\asset"]
 
 ENV sn_url=${parameter1:-}
 ENV sn_username=${parameter2:-}

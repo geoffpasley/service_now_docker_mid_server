@@ -59,11 +59,14 @@ if(!(Test-Path $config_file_path))
 }
 else
 {
-	
-	if((Test-Path "C:\_agent_temp\"))
+	if(!(Test-Path "C:\agent\bin\"))
 	{
-		Copy-Item -Path "C:\_agent_temp\agent\*" -Destination "C:\agent\" -Recurse;
-		DEL -Path "C:\_agent_temp\" -Force -Recurse;
+		Copy-Item -Path "C:\_agent\agent\*" -Destination "C:\agent\" -Recurse;
+		DEL -Path "C:\_agent\" -Force -Recurse;
+	}
+	else
+	{
+		DEL -Path "C:\_agent\" -Force -Recurse;
 	}
 
 	if(!(Test-Path $config_file))
@@ -73,9 +76,9 @@ else
 
 	if(!$error)
 	{
+		Write-Host "";
 		Write-Host "Conecting to: $url";
 		Write-Host "Mid Server name: $mid_server_name";
-		Write-Host "";
 
 		cd C:\agent\
 		.\start.bat

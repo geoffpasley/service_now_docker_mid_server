@@ -66,7 +66,10 @@ else
 	}
 	else
 	{
-		DEL -Path "C:\_agent\" -Force -Recurse;
+		if((Test-Path "C:\_agent\"))
+		{
+			DEL -Path "C:\_agent\" -Force -Recurse;
+		}
 	}
 
 	if(!(Test-Path $config_file))

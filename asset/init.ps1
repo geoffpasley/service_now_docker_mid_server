@@ -83,14 +83,14 @@ else
 		Write-Host "Conecting to: $url";
 		Write-Host "Mid Server name: $mid_server_name";
 
-		cd C:\agent\
-		.\start.bat
-
 		Write-Host "Container Started..." -ForegroundColor Green;
+		
+		cd C:\agent\
+		Start-Sleep -s 10;
+		.\stop.bat
+		.\start.bat		
 
-		while (0 -eq 0)
-		{
-			Start-Sleep -s 10;
-		}
+		# Keep Container Alive
+		ping -t localhost > $null;
 	}
 }
